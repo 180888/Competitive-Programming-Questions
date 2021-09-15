@@ -1,0 +1,25 @@
+//Program to perform Bitwise Manipulation
+#include <iostream>
+using namespace std;
+
+int lines_of_code(int n){
+    int lines=0,x=0;
+    while(n!=0){
+        x=n%2;
+        if(x==1)
+        lines++;
+        n=n>>1;
+    }
+    return lines;
+}
+int main()
+{
+    int n, t=0,lines=0;
+    cin>>t;
+    while(t--){
+        cin>>n;
+        lines=lines_of_code(n);
+        cout<<lines<<endl;
+    }
+    return 0;
+}
