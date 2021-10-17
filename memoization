@@ -1,3 +1,4 @@
+// Program to show how the Memoization technique in dynamic programming used to solve the given problem through a sample program.
 #include <iostream>
 using namespace std;
 #define max 100
