@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+#define max 100
+
+int numbers[max];
+
+void fibo_memo()
+{
+    int i;
+    for (i = 0; i < max; i++)
+    	numbers[i] = -1;
+}
+
+int fib(int n)
+{
+  if (numbers[n] == -1)
+   {
+	  if (n <= 1)
+		  numbers[n] = n;
+	  else
+		  numbers[n] = fib(n-1) + fib(n-2);
+  }
+  return numbers[n];  
+ }
+
+int main ()
+{
+
+ int n = 7;
+ fibo_memo();
+ cout<<"Fibonacci series is: ";
+ for(int i=0;i<n;i++)
+    cout<<fib(i)<<" ";
+
+ return 0;
+}
