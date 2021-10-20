@@ -1,0 +1,33 @@
+// Program to find the length of the longest subsequence such that gcd of the subsequence is greater than one.
+#include<iostream>
+using namespace std;
+
+int main() {
+	int t,n;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n;
+	    int arr[n];
+	    int max = -1,output=0;
+	    for(int i = 0; i < n; i++)
+	    {
+	        cin>>arr[i];
+	        if(max < arr[i])
+	            max = arr[i];
+	    }
+        for(int i = 2; i * i <= 100000; i++)
+        {
+            int temp = 0;
+            for(int j = 0 ; j < n; j++)
+            {
+                if(arr[j] % i == 0)
+                    temp++;
+            }
+            if(output < temp)
+                output = temp;
+        }
+        cout<<output<<endl;
+	}
+	return 0;
+}
