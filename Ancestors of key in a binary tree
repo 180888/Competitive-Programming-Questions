@@ -1,0 +1,54 @@
+// Given a Binary Tree and a key, write a function that prints all the ancestors of the key in the given binary tree.
+#include<bits/stdc++.h>
+
+using namespace std;
+struct node
+{
+    int data;
+    struct node* left;
+    struct node* right;
+};
+
+bool printAncestors(struct node *root, int target)
+{
+if (root == NULL)
+	return false;
+
+if (root->data == target)
+	return true;
+
+if ( printAncestors(root->left, target) ||
+	printAncestors(root->right, target) )
+{
+	cout << root->data << " ";
+	return true;
+}
+
+return false;
+}
+
+struct node* newnode(int data)
+{
+struct node* node = (struct node*) malloc(sizeof(struct node));
+node->data = data;
+node->left = NULL;
+node->right = NULL;
+
+return(node);
+}
+
+int main()
+{
+struct node *root = newnode(9);
+root->left	 = newnode(8);
+root->right	 = newnode(7);
+root->left->left = newnode(6);
+root->left->right = newnode(5);
+root->left->left->left = newnode(4);
+
+cout<<"Ancestors of 4 are: ";
+printAncestors(root, 4);
+
+getchar();
+return 0;
+}
