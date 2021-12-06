@@ -1,0 +1,41 @@
+#include<iostream>
+#include <queue>
+using namespace std;
+struct position{
+    int index ;
+    int marks;
+    position(int index,int marks): index(index), marks(marks){}
+};
+struct Comparemarks{
+   bool operator()(position p1,position p2)
+   {
+      if (p1.marks > p2.marks)
+            return false;
+      else if (p1.marks < p2.marks)
+            return true;
+      else { // when marks are same
+            if (p1.index > p2.index) 
+                return false;
+            else
+                return true;
+        }
+   }
+};
+int main() {
+	int t; cin>>t;
+	while(t--){
+	int n; cin>>n; int a[n];
+    priority_queue<position, vector<position>, Comparemarks>p;
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+        p.push(position(i+1,a[i]));
+    }
+   while(!p.empty()){
+        position q=p.top();
+        p.pop();
+        cout<<q.index<<" ";
+    }
+    cout<<endl;
+	}
+}
